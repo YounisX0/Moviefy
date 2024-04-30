@@ -391,3 +391,16 @@ aspect-ratio: 16/9;
     font-size: 66px;
     color: var(--main-color);
 }
+.about-movie {
+    margin-top: 2rem;
+}
+.about-movie  h2{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--main-color);
+}
+.about-movie p{
+    max-width: 600px;
+    font-size: 1rem;
+    margin: 10px 0;
+}
