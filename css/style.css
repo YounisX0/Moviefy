@@ -404,3 +404,9 @@ aspect-ratio: 16/9;
     font-size: 1rem;
     margin: 10px 0;
 }
+.cast-heading{
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    color: var(--main-color);
+}
