@@ -410,3 +410,14 @@ aspect-ratio: 16/9;
     margin-top: 1rem;
     color: var(--main-color);
 }
+.cast{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(150px,150px));
+    gap: 1rem;
+}
+.cast-img{
+    width: 150px;
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+}
