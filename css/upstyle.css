@@ -1,9 +1,14 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 .body{
-  background: url("../images/t2.jpg");
+  background: url("../images/picc.jpg");
+ 
+  background-color: #cccccc;
+  height: 500px;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
 }
 
 
@@ -121,7 +126,7 @@ border-radius:30px;
   text-decoration: none;
 }
 .container .info span .fa {
-  color: #EF3B3A;
+  color: red;
 }
 body {
   background: #76b852; /* fallback for old browsers */
