@@ -421,7 +421,7 @@ aspect-ratio: 16/9;
     object-fit: cover;
     object-position: center;
 }
-.download{
+.watch{
     max-width: 800px;
     width: 1005;
 margin: auto;
@@ -430,10 +430,26 @@ justify-content: center;
 margin-top: 2rem;
 
 }
-.download-title{
+.watch-title{
     text-align: center;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 500;
     margin: 1.6rem 0;
     color: var(--main-color);
+}
+.watch-link{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+.watch-link a{
+text-align: center;
+background: var(--main-color);
+padding: 10px 20px;
+color: var(--text-color);
+letter-spacing: 1px;
+}
+.watch-link a:hover{
+    background: var(--hover-color);
 }
