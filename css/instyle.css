@@ -1,19 +1,26 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 .body{
-  background-image: url("../images/t2.jpg");
+  background-image: url("../images/picc.jpg");
+ 
+  background-color: #cccccc;
+  height: 550px;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
 }
 
+
 .login-page {
-  width: 360px;
-  padding: 8% 0 0;
-  margin: auto;
+ display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 
 }
 .form {
-  position: relative;
+  position: top;
   z-index: 1;
   background: #161717;
   max-width: 360px;
@@ -57,7 +64,7 @@ border-radius:30px;
 
 }
 .form button:hover,.form button:focus {
-  background:#f45009;
+  background:red;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   transform: translateY(-4px);
 }
@@ -83,6 +90,32 @@ border-radius:30px;
   text-decoration: none;
   font-size: 13px;
 }
+
+.form-link{
+  text-align: center;
+  margin-top: 10px;
+}
+
+
+.form-link span,
+.form-link a{
+  font-size: 14px;
+  font-weight: 400;
+  color: #eff0f3;
+}
+
+
+.form a{
+  color: #0171d3;
+  text-decoration: none;
+}
+
+
+.form-content a:hover{
+  text-decoration: underline;
+}
+
+
 .form .register-form {
   display: none;
 }
