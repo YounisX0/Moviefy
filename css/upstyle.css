@@ -1,35 +1,37 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 .body{
-  background: url("../images/picc.jpg");
- 
-  background-color: #cccccc;
-  height: 500px;
-  background-position: center;
+  background-image: url("../images/picc.jpg");
+
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
+  width: 100%;
+  height: 600px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
 .login-page {
-  width: 360px;
-  padding: 8% 0 0;
-  margin: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 .form {
-  position: relative;
-  z-index: 1;
-  background: #080808;
-  max-width: 360px;
-  margin: 0 auto 100px;
-  padding: 45px;
+  position: absolute;
+  
+  background: rgb(150, 148, 148);
+ 
+  
   text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24) ;
+  padding: 13px; 
+  width: 550px;
+
+
   
 }
 .form input {
@@ -66,7 +68,7 @@ border-radius:30px;
 
 }
 .form button:hover,.form button:focus {
-  background: #f45009;
+  background: red;
    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   transform: translateY(-4px);
 }
