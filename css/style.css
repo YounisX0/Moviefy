@@ -49,7 +49,7 @@ header{
     top: 0;
     left: 0;
     width: 100%;
-     background: var(--body-color);
+   background: var(--body-color);
     z-index: 100;
 }
 
@@ -267,7 +267,6 @@ transition: 0.5s;
     align-items: center;
     justify-content: center;
     margin-top: 2.5rem;
-
   }
   .next-btn{
     background: var(--main-color);
@@ -391,22 +390,99 @@ aspect-ratio: 16/9;
     font-size: 66px;
     color: var(--main-color);
 }
-.about-movie {
-    margin-top: 2rem;
+.toggle{
+    width: 40px;
+    height: 20px;
+    background-color: black;
+    border-radius: 30px;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
 }
-.about-movie  h2{
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--main-color);
+.toggle-icon{
+    color: goldenrod;
 }
-.about-movie p{
-    max-width: 600px;
-    font-size: 1rem;
-    margin: 10px 0;
+.toggle-ball{
+    width: 18px;
+    height: 18px;
+    background-color: white;
+    position: absolute;
+    right: 1px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.5s ease all;
 }
-.cast-heading{
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-top: 1rem;
-    color: var(--main-color);
+.toggle.active {
+    background-color: whitesmoke;
 }
+
+.toggle-ball.active {
+    background-color: black;
+    transform: translateX(-20px);
+}
+
+body.active {
+    background: whitesmoke;
+}
+
+header.active {
+    background: whitesmoke;
+}
+
+.logo.active {
+    color: black;
+}
+.nav-link.active{
+    color: black;
+}
+.copy.active{
+    color: black;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid  #76101076 ;
+    text-align: left;
+    padding: 2px;
+  }
+  th {
+    background-color:  #76101076;
+    color: white;
+  }
+  .removeButton {
+    cursor: pointer;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+  }
+  .removeButton:hover {
+    background-color: var(--hover-color);
+  }
+  .pmg{
+    color: white;
+  }
+  .pmg.active{
+    color: black;
+  }
+  .elements{
+    color:white;
+  }
+  .elements.active{
+    color:black;
+  }
+  .ptable{
+    color: white;
+  }
+  .ptable.active{
+    color:black;
+  }
