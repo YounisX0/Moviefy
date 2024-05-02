@@ -37,12 +37,6 @@ body {
 	background: var(--body-color);
 	overflow-x: hidden;
 }
-
-
-
-
-
-/* SIDEBAR */
 #sidebar {
 	position: fixed;
 	top: 0;
@@ -151,6 +145,10 @@ body {
     width:calc(100%-280px);
     left: 280px;
 }
+#sidebar.hide ~ #content {
+	width: calc(100% - 60px);
+	left: 60px;
+}
 #content nav{
     height: 56px;
     background: var(--main-color);
@@ -230,6 +228,42 @@ body {
     object-fit: cover;
     border-radius:50% ;
 }
+#content main {
+	width: 100%;
+	padding: 36px 24px;
+	font-family: var(--poppins);
+	max-height: calc(100vh - 56px);
+	overflow-y: auto;
+}
+#content main .head-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	grid-gap: 16px;
+	flex-wrap: wrap;
+}
+#content main .head-title .left h1 {
+	font-size: 36px;
+	font-weight: 600;
+	margin-bottom: 10px;
+	color: var(--text-color);
+}
+#content main .head-title .left .breadcrumb {
+	display: flex;
+	align-items: center;
+	grid-gap: 16px;
+}
+#content main .head-title .left .breadcrumb li {
+	color: var(--container-color);
+}
+#content main .head-title .left .breadcrumb li a {
+	color: var(--main-color);
+	pointer-events: none;
+}
+#content main .head-title .left .breadcrumb li a.active {
+	color: var(--container-color);
+	pointer-events: unset;
+}
 .toggle{
     width: 40px;
     height: 20px;
@@ -266,3 +300,37 @@ body.active {
     background: whitesmoke;
 }
 
+
+
+
+@media screen and (max-width:768px){
+    #content{
+        width:calc(100%-60px);
+    }
+    #content nav .nav-link{
+        display: none;
+     }
+}
+@media screen and (max-width:576){
+   
+    #content nav form .form-input input{
+        display: none;
+    }
+    #content nav form .form-input button {
+        width: auto;
+        height: auto;
+        background: transparent;
+        border-radius: none;
+        color: var(--text-color);
+    }
+    #content nav form.show .form-input input input {
+        display: block;
+    }
+    #content nav form.show .form-input button{
+        width: 36px;
+        height: 100%;
+        border-radius: 0 36px 36px 0;
+        color: var(--main-color);
+        background: var(--body-color);
+    }
+}
