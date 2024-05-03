@@ -39,11 +39,41 @@ window.addEventListener('resize', function () {
 		searchForm.classList.remove('show');
 	}
 })
-//const switchMode = document.getElementById('switch-mode');
-//switchMode.addEventListener('change', function () {
-	//if(this.checked) {
-	//	document.body.classList.add('dark');
-	//} else {
-	//	document.body.classList.remove('dark');
-	//}
-//})
+fetch('index.html')
+  .then(response => response.text())
+  .then(data => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(data, 'text/html');
+    const movieTitles = doc.querySelectorAll('.movie-title');
+    const tbody = document.getElementById('movieList');
+
+    movieTitles.forEach(title => {
+        const row = document.createElement('tr');
+        const movieCell = document.createElement('td');
+        movieCell.textContent = title.textContent;
+        const ratingCell = document.createElement('td');
+        ratingCell.textContent = '5.0'; 
+        const optionsCell = document.createElement('td');
+
+        const editIcon = document.createElement('i');
+        editIcon.classList.add('bx', 'bxs-edit-alt');
+        const editButton = document.createElement('button');
+        editButton.appendChild(editIcon);
+		editButton.classList.add('btn');
+        optionsCell.appendChild(editButton);
+
+        const removeIcon = document.createElement('i');
+        removeIcon.classList.add('bx', 'bxs-minus-circle');
+        const removeButton = document.createElement('button');
+        removeButton.appendChild(removeIcon);
+		removeButton.classList.add('btn');
+        optionsCell.appendChild(removeButton);
+
+        row.appendChild(movieCell);
+        row.appendChild(ratingCell);
+        row.appendChild(optionsCell);
+
+        tbody.appendChild(row);
+    });
+  })
+  .catch(error => console.error('Error fetching content:', error));
