@@ -114,6 +114,36 @@
 }
 
 
-.form-content a:hover {
-  text-decoration: underline;
-}
+.toggle{
+  width: 40px;
+  height: 20px;
+  background-color: black;
+  border-radius: 30px;
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+ }
+ .toggle-icon{
+  color: goldenrod;
+ }
+ .toggle-ball{
+  width: 18px;
+  height: 18px;
+  background-color: white;
+  position: absolute;
+  right: 1px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.5s ease all;
+ }
+ .toggle.active {
+  background-color: whitesmoke;
+ }
+ 
+ .toggle-ball.active {
+  background-color: black;
+  transform: translateX(-20px);
+ }
+
+

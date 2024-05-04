@@ -2,80 +2,103 @@
 <html lang="en">
 <html>
 
+
+
 <head>
-  
+
   <title>Login</title>
   <link rel="stylesheet" href="../css/instyle.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
-    integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/swiper-bundle.min.css">
+  <link rel="shortcut icon" href="../img/fav-icon.png" type="image/png">
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 
 
 
+<body>
+  <header>
+    <div class="nav container">
+      <a href="../html/index.html" class="logo">
+        Movi<span>Fey</span>
+      </a>
 
-<body class="body">
-  
-
-  <div class="login-page">
-    <div class="form">
-      <form>
-        <input type="text" placeholder="&#xf007;  username" />
-        <input type="password" id="password" placeholder="&#xf023;  password" />
-        <i class="fas fa-eye" style="font-size:20px;color:white" onclick="showPassword()"></i>
-        <br>
-        <br>
-
-      </form>
-
-
-      <button style="font-size:24px">Login <i class="fas fa-sign-in-alt"></i></button>
-
-      <div class="form-link">
-
-        <br>
-        <a href="../html/forgotpsw.html" class="forgot-pass">Forgot password?</a>
+      <div class="toggle">
+        <i class="fa-solid fa-moon toggle-icon"></i>
+        <i class="fa-solid fa-sun toggle-icon"></i>
+        <div class="toggle-ball"></div>
+      </div>
     </div>
 
+  </header>
 
-    <div class="form-link">
-      <span>Don't have an account? <a href="../html/signup.html" class="link signup-link">Signup</a></span>
-  </div>
-</div>
-
-
-
-     
-      
-
-      </form>
-    </div>
-  </div>
-
-  <script>
-    function showPassword() {
-      var password = document.getElementById("password");
-      var icon = document.querySelector(".fas");
-
-      if (password.type === "password") {
-        password.type = "text";
-        icon.classList.remove("fa-eye");
-        icon.classList.add("fa-eye-light");
-      } else {
-        password.type = "password";
-        icon.classList.remove("fa-eye-light");
-        icon.classList.add("fa-eye");
-      }
-    };
-  </script>
 </body>
+
+    </div>
+
+
+
+    <div class="login-page">
+      <div class="form">
+        <form>
+          <input type="text" placeholder="&#xf007;  username" />
+          <input type="password" id="password" placeholder="&#xf023;  password" />
+          <i class="fas fa-eye" style="font-size:20px;color:white" onclick="showPassword()"></i>
+          <br>
+          <br>
+
+        </form>
+
+
+        <button style="font-size:24px">Login <i class="fas fa-sign-in-alt"></i></button>
+
+        <div class="form-link">
+
+          <br>
+          <a href="../html/forgotpsw.html" class="forgot-pass">Forgot password?</a>
+        </div>
+
+
+        <div class="form-link">
+          <span>Don't have an account? <a href="../html/signup.html" class="link signup-link">Signup</a></span>
+        </div>
+      </div>
+
+
+
+
+
+      </form>
+    </div>
+    </div>
+
+    <script>
+      function showPassword() {
+        var password = document.getElementById("password");
+        var icon = document.querySelector(".fas");
+
+        if (password.type === "password") {
+          password.type = "text";
+          icon.classList.remove("fa-eye");
+          icon.classList.add("fa-eye-light");
+        } else {
+          password.type = "password";
+          icon.classList.remove("fa-eye-light");
+          icon.classList.add("fa-eye");
+        }
+      };
+    </script>
+  </body>
 
 </html>
