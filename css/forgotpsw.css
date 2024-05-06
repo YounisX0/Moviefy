@@ -92,32 +92,4 @@
 
   }
 
-  .toggle.active {
-    background-color: #f8f8f8; /* Change to your desired background color */
-  }
-  
-  .toggle-ball.active {
-    background-color: black; /* Change to your desired color */
-    transform: translateX(-20px);
-  }
-  
-  body.active {
-    background: #f8f8f8; /* Change to your desired background color */
-  }
-  
-  header.active {
-    background: #f8f8f8; /* Change to your desired background color */
-  }
-  
-  .logo.active {
-    color: black; /* Change to your desired color */
-  }
-  
-  .nav-link.active {
-    color: black; /* Change to your desired color */
-  }
-  
-  .copy.active {
-    color: black; /* Change to your desired color */
-  }
   
