@@ -46,7 +46,7 @@
 
 
 .form input {
-  font-family: FontAwesome, "Roboto", sans-serif;
+  font-family: "Times New Roman", Times, serif;
   outline: 0;
   background: #f2f2f2;
   width: 100%;
@@ -70,7 +70,7 @@
 
 .form button:hover,
 .form button:focus {
-  background: red;
+  background: rgb(115, 74, 74);;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   transform: translateY(-4px);
 }
