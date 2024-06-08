@@ -1,23 +1,17 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 .body{
-  background-image: linear-gradient(#1e1e2a, #681010);
+
   background-image: linear-gradient(#1e1e2a, #1e1e2a);
-  
-  
-  
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
   height: 100%;
-  
   display: flex;
   justify-content: center;
   align-items: center;
 
 }
-
-
 
 .signup-page {
   display: flex;
@@ -28,14 +22,9 @@
 
 }
 
-
-
 .form {
   position: absolute;
-
   background: transparent;
-
-
   text-align: center;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   padding: 13px;
@@ -43,19 +32,17 @@
 
 }
 
-
-
 .form input {
   font-family: "Times New Roman", Times, serif;
   outline: 0;
   background: #f2f2f2;
   width: 100%;
   border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
+  margin: 0 0 25px;
+  padding: 20px;
   box-sizing: border-box;
-  font-size: 14px;
-  border-radius: 15px;
+  font-size: 18px;
+  border-radius: 30px;
 
 }
 
@@ -70,7 +57,7 @@
 
 .form button:hover,
 .form button:focus {
-  background: rgb(115, 74, 74);;
+  background: rgb(244, 106, 106);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   transform: translateY(-4px);
 }
@@ -157,10 +144,73 @@ header.active {
   color: black;
 }
 
+/* style.css */
+
+/* Style all input fields */
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+/* Style the submit button */
+input[type=submit] {
+  background-color: #e7e0e0;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #f25858;
+}
 
 
 
+/* The message box is shown when the user clicks on the password field */
+#message {
+  display: none;
+  background: tr;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+}
 
+#message p {
+  padding: 10px 35px;
+  font-size: 18px;
+  position: center;
+}
 
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: center;
+  left: -35px;
+  content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "✖";
+}
+.body.dark-mode label {
+  color: #fff; /* White text color */
+}
 
 
