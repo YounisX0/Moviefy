@@ -186,4 +186,20 @@ input {
   box-shadow: 0 2.5px 5px rgba(0, 0, 0, 0.2);
 }
 
+.or-line {
+  text-align: center;
+  margin: 10px 0;
+  color: #777; /* Adjust color as needed */
+}
+
+.or-line::before,
+.or-line::after {
+  content: "";
+  display: inline-block;
+  width: 100px; /* Adjust width as needed */
+  height: 2px;
+  background-color: #777; /* Adjust color as needed */
+  vertical-align: middle;
+}
+
 
