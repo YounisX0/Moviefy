@@ -1,25 +1,73 @@
-// script.js
-
 document.addEventListener('DOMContentLoaded', () => {
+
   var passwordInput = document.getElementById("password");
+  var confPasswordInput = document.getElementById("conf_password");
   var letter = document.getElementById("letter");
   var capital = document.getElementById("capital");
   var number = document.getElementById("number");
   var length = document.getElementById("length");
+  var passwordMismatch = document.getElementById('passwordMismatch');
 
-  // When the user clicks on the password field, show the message box
+
+
+  var phoneInput = document.getElementById('phone');
+  phoneInput.addEventListener('input', () => {
+    const phoneNumber = phoneInput.value;
+    const regex = /^[0-9]{0,11}$/;
+    if (!regex.test(phoneNumber)) {
+      phoneInput.value = phoneNumber.slice(0, -1);
+    }
+
+    if (phoneNumber.length !== 11) {
+     
+    }
+  });
+
+  
+  for (let i = 1; i <= 31; i++) {
+    let option = document.createElement('option');
+    option.value = option.textContent = i;
+    document.getElementById('day').appendChild(option);
+  }
+
+ 
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  months.forEach((month, index) => {
+    let option = document.createElement('option');
+    option.value = index + 1;
+    option.textContent = month;
+    document.getElementById('month').appendChild(option);
+  });
+
+
+  for (let i = 1900; i <= new Date().getFullYear(); i++) {
+    let option = document.createElement('option');
+    option.value = option.textContent = i;
+    document.getElementById('year').appendChild(option);
+  }
+
+});
+document.addEventListener('DOMContentLoaded', () => {
+  var passwordInput = document.getElementById("password");
+  var confPasswordInput = document.getElementById("conf_password");
+  var letter = document.getElementById("letter");
+  var capital = document.getElementById("capital");
+  var number = document.getElementById("number");
+  var length = document.getElementById("length");
+  var passwordMismatch = document.getElementById('passwordMismatch');
+  var phoneInput = document.getElementById('phone');
+
   passwordInput.onfocus = function() {
     document.getElementById("message").style.display = "block";
   }
 
-  // When the user clicks outside of the password field, hide the message box
   passwordInput.onblur = function() {
     document.getElementById("message").style.display = "none";
   }
 
-  // When the user starts to type something inside the password field
+ 
   passwordInput.onkeyup = function() {
-    // Validate lowercase letters
+ 
     var lowerCaseLetters = /[a-z]/g;
     if(passwordInput.value.match(lowerCaseLetters)) {  
       letter.classList.remove("invalid");
@@ -29,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
       letter.classList.add("invalid");
     }
     
-    // Validate capital letters
     var upperCaseLetters = /[A-Z]/g;
     if(passwordInput.value.match(upperCaseLetters)) {  
       capital.classList.remove("invalid");
@@ -39,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
       capital.classList.add("invalid");
     }
 
-    // Validate numbers
+  
     var numbers = /[0-9]/g;
     if(passwordInput.value.match(numbers)) {  
       number.classList.remove("invalid");
@@ -48,8 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
       number.classList.remove("valid");
       number.classList.add("invalid");
     }
-    
-    // Validate length
+  
     if(passwordInput.value.length >= 8) {
       length.classList.remove("invalid");
       length.classList.add("valid");
@@ -59,23 +105,50 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Password visibility toggle for first password field
+ 
   document.getElementById('togglePassword1').addEventListener('click', function () {
     const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
     passwordInput.setAttribute('type', type);
     this.classList.toggle('fa-eye-slash');
   });
 
-  // Password visibility toggle for confirm password field
-  var confPasswordInput = document.getElementById("conf_password");
   document.getElementById('togglePassword2').addEventListener('click', function () {
     const type = confPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
     confPasswordInput.setAttribute('type', type);
     this.classList.toggle('fa-eye-slash');
-
-    
   });
 
+ 
+  phoneInput.addEventListener('input', () => {
+    const phoneNumber = phoneInput.value;
+    const regex = /^[0-9]{0,11}$/;
+    if (!regex.test(phoneNumber)) {
+      phoneInput.value = phoneNumber.slice(0, -1);
+    }
+  });
 
-  
+  confPasswordInput.addEventListener('input', () => {
+    if (passwordInput.value !== confPasswordInput.value) {
+      passwordMismatch.style.display = 'block';
+    } else {
+      passwordMismatch.style.display = 'none';
+    }
+  });
+
+  document.getElementById('signupForm').addEventListener('submit', function(event) {
+    if (passwordInput.value !== confPasswordInput.value) {
+      event.preventDefault();
+      passwordMismatch.style.display = 'block';
+    } else {
+      passwordMismatch.style.display = 'none';
+    }
+  });
+
+ 
+  const toggleButton = document.querySelector('.toggle');
+  const body = document.querySelector('body');
+
+  toggleButton.addEventListener('click', () => {
+    body.classList.toggle('light-mode');
+  });
 });

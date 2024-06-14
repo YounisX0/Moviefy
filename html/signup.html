@@ -38,18 +38,42 @@
       <label for="username">Pick a Username</label>
       <input type="text" id="username" name="username" required>
 
+      <label for="gender">Gender:</label>
+      <select name="gender" id="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+
+      <br><br><br>
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" pattern="[0-9]{11}" required>
+      <span id="phoneError" style="color: red; display: none;">Phone number must be 11 digits.</span>
+
+      <label for="dob">Date of Birth</label>
+      <div class="dob-dropdowns">
+        <select id="day" name="day" required>
+          <!-- Options for days (1-31) will be populated by JavaScript -->
+        </select>
+        <select id="month" name="month" required>
+          <!-- Options for months (January-December) will be populated by JavaScript -->
+        </select>
+        <select id="year" name="year" required>
+          <!-- Options for years (e.g., 1900-2024) will be populated by JavaScript -->
+        </select>
+      </div>
+<br><br>
       <label for="password">Set a Password</label>
       <div style="position: relative;">
         <input type="password" id="password" name="password" required>
         <i class="fas fa-eye" id="togglePassword1" style="position: absolute; right: 10px; top: 40%; transform: translateY(-50%); font-size: 20px; color: black; cursor: pointer;"></i>
       </div>
 
-      
-
       <label for="conf_password">Confirm Password</label>
       <div style="position: relative;">
         <input type="password" id="conf_password" name="conf_password" required>
         <i class="fas fa-eye" id="togglePassword2" style="position: absolute; right: 10px; top: 40%; transform: translateY(-50%); font-size: 20px; color: black; cursor: pointer;"></i>
+        <!-- Error message placeholder -->
+        <span id="passwordError" style="color: red; display: none;"></span>
       </div>
 
       <input type="submit" value="Submit">
@@ -57,25 +81,13 @@
   </div>
 
   <div id="message">
-    
     <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
     <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
     <p id="number" class="invalid">A <b>number</b></p>
     <p id="length" class="invalid">Minimum <b>8 characters</b></p>
   </div>
+
   <script src="../javascript/signup.js"></script>
   <script src="../javascript/swiper-bundle.min.js"></script>
   <script src="../javascript/main.js"></script>
   <script src="../javascript/script.js"></script>
-
-
-  <script>
-    const toggleButton = document.querySelector('.toggle');
-    const body = document.querySelector('body');
-
-    toggleButton.addEventListener('click', () => {
-      body.classList.toggle('light-mode');
-    });
-  </script>
-</body>
-</html>
