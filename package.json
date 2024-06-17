@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "express": "^4.19.2",
+    "hbs": "^4.2.0",
+    "mongoose": "^8.4.1"
+  },
+  "name": "moviefy",
+  "description": "A responsive movie website that includes :\r Main page (SIGN-IN, SIGN-UP, ABOUT, FAQ, CONTACT).\r Login-Page.\r Sign-Up page.\r Movies page that include Movies sections.\r A page for Each movie that contains its details (Trailer, Name, Cast-Names, Rating).",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
