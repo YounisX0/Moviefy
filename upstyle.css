@@ -1,74 +1,82 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 .body{
-
-  background-image: linear-gradient(#1e1e2a, #1e1e2a);
+  background: url("../images/picc.jpg");
+ 
+  background-color: #cccccc;
+  height: 500px;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+  position: relative;
 }
 
-.signup-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
 
-
-}
-
-.form {
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
   position: absolute;
-  background: transparent;
-  text-align: center;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-  padding: 13px;
-  width: 550px;
-
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-
+.form {
+  position: relative;
+  z-index: 1;
+  background: #080808;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  
+}
 .form input {
-  font-family: "Times New Roman", Times, serif;
+  font-family: FontAwesome, "Roboto", sans-serif;
   outline: 0;
   background: #f2f2f2;
   width: 100%;
   border: 0;
-  margin: 0 0 25px;
-  padding: 20px;
-  box-sizing: border-box;
-  font-size: 18px;
-  border-radius: 30px;
-
-}
-
-.form button {
-
-  font-weight: bold;
-  width: 100%;
-  border-radius: 30px;
+  margin: 0 0 15px;
   padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+border-radius:10px;
+
+  
+}
+.form button {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: .1em;
+  outline: 0;
+  background: #f9f9f9;
+  width: 100%;
+  border: 0;
+border-radius:30px;
+  margin: 0px 0px 8px;
+  padding: 15px;
+  color: #0e0d0d;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  transition: all 0.2s;
 
 }
-
-.form button:hover,
-.form button:focus {
-  background: rgb(244, 106, 106);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+.form button:hover,.form button:focus {
+  background: #f45009;
+   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   transform: translateY(-4px);
 }
-
 .form button:active {
   transform: translateY(2px);
   box-shadow: 0 2.5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .form .message {
-
+  
   margin: 6px 6px;
   color: #808080;
   font-size: 11px;
@@ -76,165 +84,78 @@
   font-weight: bold;
   font-style: normal;
 
-
-
-}
-
-
-
-
-
-.form-link span,
-.form-link a {
-  font-size: 14px;
-  font-weight: 400;
-  color: #eff0f3;
-  height: 5px;
+  
 
 }
-
-.toggle{
-  width: 40px;
-  height: 20px;
-  background-color: black;
-  border-radius: 30px;
-  display:flex;
-  justify-content: space-around;
-  align-items: center;
-  position: relative;
- }
- .toggle-icon{
-  color: goldenrod;
- }
- .toggle-ball{
-  width: 18px;
-  height: 18px;
-  background-color: white;
-  position: absolute;
-  right: 1px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: 0.5s ease all;
- }
- .toggle.active {
-  background-color: whitesmoke;
- }
- 
- .toggle-ball.active {
-  background-color: black;
-  transform: translateX(-20px);
- }
-
-
- body.active {
-  background: whitesmoke;
+.form .message a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 13px;
 }
-
-header.active {
-  background: whitesmoke;
-}
-
-.logo.active {
-  color: black;
-}
-.nav-link.active{
-  color: black;
-}
-.copy.active{
-  color: black;
-}
-
-/* style.css */
-
-/* Style all input fields */
-input {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-top: 6px;
-  margin-bottom: 16px;
-}
-
-/* Style the submit button */
-input[type=submit] {
-  background-color: #e7e0e0;
-  color: black;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: #f25858;
-}
-
-
-
-/* The message box is shown when the user clicks on the password field */
-#message {
+.form .register-form {
   display: none;
-  background: tr;
-  color: #000;
+}
+.container {
   position: relative;
-  padding: 20px;
-  margin-top: 10px;
+  z-index: 1;
+  max-width: 300px;
+  margin: 0 auto;
 }
-
-#message p {
-  padding: 10px 35px;
-  font-size: 18px;
-  position: center;
+.container:before, .container:after {
+  content: "";
+  display: block;
+  clear: both;
 }
-
-/* Add a green text color and a checkmark when the requirements are right */
-.valid {
-  color: green;
+.container .info {
+  margin: 50px auto;
+  text-align: center;
 }
-
-.valid:before {
-  position: center;
-  left: -35px;
-  content: "✔";
+.container .info h1 {
+  margin: 0 0 15px;
+  padding: 0;
+  font-size: 36px;
+  font-weight: 300;
+  color: #1a1a1a;
 }
-
-/* Add a red text color and an "x" when the requirements are wrong */
-.invalid {
+.container .info span {
+  color: #4d4d4d;
+  font-size: 12px;
+}
+.container .info span a {
+  color: #000000;
+  text-decoration: none;
+}
+.container .info span .fa {
   color: red;
 }
-
-.invalid:before {
-  position: relative;
-  left: -35px;
-  content: "✖";
+body {
+  background: #76b852; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+  background: -moz-linear-gradient(right, #76b852, #8DC26F);
+  background: -o-linear-gradient(right, #76b852, #8DC26F);
+  background: linear-gradient(to left, #76b852, #8DC26F);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;    
 }
-.body.dark-mode label {
-  color: #fff; /* White text color */
-}
-
-.flex-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.flex-container div {
-  flex: 1;
-  margin-right: 10px;
-}
-
-.flex-container div:last-child {
-  margin-right: 0;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-input[type="tel"], select {
-  width: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-}
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: #f2f2f2;
+    border-radius: 20px;
+    padding: 5px 10px;
+  }
+  
+  .search-box input {
+    flex: 1;
+    border: none;
+    background-color: transparent;
+    padding: 5px;
+    font-size: 16px;
+  }
+  
+  .search-box i {
+    font-size: 20px;
+    color: #666;
+    margin-left: 5px;
+  }
