@@ -24,7 +24,7 @@ function showPassword() {
   
     if (username === staticUsername && password === staticPassword) {
       // Successful login
-      alert("Login successful!");
+     
       window.location.href = "index.html"; // Redirect to index.html
     } else {
       // Display error message
@@ -45,3 +45,15 @@ function showPassword() {
     }
   });
   
+  // Add this to your existing script in the HTML or in login.js
+document.getElementById('togglePassword').addEventListener('click', function () {
+  const password = document.getElementById('password');
+  const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+  password.setAttribute('type', type);
+  this.classList.toggle('fa-eye-slash');
+});
+
+document.getElementById('modeToggle').addEventListener('click', function () {
+  document.body.classList.toggle('light-mode');
+  document.getElementById('signupText').classList.toggle('light-mode-text');
+});
