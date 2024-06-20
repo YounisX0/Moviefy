@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-.body {
+body {
   background-image: linear-gradient(#1e1e2a, #1e1e2a);
   background-repeat: no-repeat;
   background-size: cover;
@@ -9,6 +9,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
+}
+
+.dark-mode {
+  background-color: black;
+  color: white;
 }
 
 .signup-page {
@@ -17,6 +23,8 @@
   align-items: center;
   height: 100vh;
 }
+
+
 
 .form {
   position: absolute;
@@ -113,6 +121,7 @@
 
 body.active {
   background: whitesmoke;
+  color: black;
 }
 
 header.active {
@@ -131,7 +140,6 @@ header.active {
   color: black;
 }
 
-/* Style all input fields */
 input {
   width: 100%;
   padding: 12px;
@@ -142,7 +150,6 @@ input {
   margin-bottom: 16px;
 }
 
-/* Style the submit button */
 input[type=submit] {
   background-color: #e7e0e0;
   color: black;
@@ -155,7 +162,6 @@ input[type=submit]:hover {
   background-color: #f25858;
 }
 
-/* The message box is shown when the user clicks on the password field */
 #message {
   display: none;
   background: tr;
@@ -171,7 +177,6 @@ input[type=submit]:hover {
   position: center;
 }
 
-/* Add a green text color and a checkmark when the requirements are right */
 .valid {
   color: green;
 }
@@ -182,7 +187,6 @@ input[type=submit]:hover {
   content: "✔";
 }
 
-/* Add a red text color and an "x" when the requirements are wrong */
 .invalid {
   color: red;
 }
@@ -193,7 +197,7 @@ input[type=submit]:hover {
   content: "✖";
 }
 
-.body.dark-mode label {
+body.dark-mode label {
   color: #fff; /* White text color */
 }
 
