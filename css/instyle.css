@@ -202,4 +202,10 @@ input {
   vertical-align: middle;
 }
 
-
+.light-mode-text {
+  color: black !important;
+}
+.dark-mode {
+  background-color: black;
+  color: white;
+}

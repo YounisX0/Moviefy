@@ -48,12 +48,7 @@
       <div class="form-link">
         <span class="signup-text" id="signupText">Don't have an account? <a href="../html/signup.html" class="link signup-link">Signup</a></span>
       </div>
-      <div class="or-line">OR</div>
-      <div class="form-link">
-        <button id="gmail-login" class="gmail-btn" onclick="loginWithGmail()">
-          <i class="fab fa-google"></i> Login with Gmail
-        </button>
-      </div>
+      
     </div>
   </div>
 
@@ -68,11 +63,7 @@
       password.setAttribute('type', type);
       this.classList.toggle('fa-eye-slash');
     });
-
-    document.getElementById('modeToggle').addEventListener('click', function () {
-      document.body.classList.toggle('light-mode');
-      document.getElementById('signupText').classList.toggle('light-mode-text');
-    });
+  
   </script>
 </body>
 </html>
