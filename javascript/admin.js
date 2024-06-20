@@ -39,7 +39,7 @@ window.addEventListener('resize', function () {
 		searchForm.classList.remove('show');
 	}
 })
-fetch('mainpage.html')
+fetch('index.html')
   .then(response => response.text())
   .then(data => {
     const parser = new DOMParser();

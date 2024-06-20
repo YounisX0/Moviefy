@@ -1,0 +1,259 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#banner{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(81, 30, 30, 0.75),rgba(0, 0, 0, 0.75)),url(background.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.navbar{
+    width: 85%;
+    margin: auto;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#sidenavb{
+    width: 250px;
+    height: 100vh;
+position: fixed;
+right: -250px;
+top: 0;
+background: #8e030375;
+z-index: 2;
+transition: 0.5s;
+
+}
+.logo{
+    width: 140px;
+    cursor:pointer;
+    left: 2%;
+    position: absolute;
+    top: 4%;
+}
+.banner-text p1{
+    font-size: 20px;
+    font-style: normal;
+}
+.navbar ul li{
+list-style: none;
+display: inline-block;
+margin: 0 20px;
+position: relative;
+}
+
+.navbar ul li a{
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+}
+.navbar ul li ::after{
+    content: '';
+    height: 3px;
+    width: 0;
+    background: #a9040475;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+}
+.navbar ul li:hover ::after{
+width:100%;
+
+}
+nav ul li{
+    list-style: none;
+    margin: 50px 20px;
+}
+nav ul li a{
+    text-decoration: none;
+    color: #fff;
+}
+#menubutton{
+
+    width: 50px;
+    height: 50px;
+    background: #980505;
+    text-align: center;
+    position: fixed;
+    right: 30px;
+    top: 20px;
+    border-radius: 3px;
+    z-index: 3;
+    cursor: pointer;
+}
+#menubutton img{
+width: 40px;
+margin-top: 15px;
+}
+
+
+.content{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: #fff;
+}
+.content h1{
+    font-size: 60px;
+    margin-top: 80px;
+
+}
+.content p{
+    margin: 20px auto;
+    font-weight: 100;
+    line-height: 25px;
+
+}
+button{
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid #980505;
+    background:transparent;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+span{
+    background: #980505;
+    height: 100%;
+    width: 0;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0.5s;
+}
+button:hover span{
+    width: 100%;
+
+}
+button :hover{
+border: none;
+}
+@media screen and (max-width: 770px ) {
+    .content h1{
+    font-size: 30px;
+    margin-top: 200px;
+
+}
+}
+#aboutt{
+    width: 100%;
+    padding: 170px 0;
+    background-image: linear-gradient(rgba(81, 30, 30, 0.479),rgba(0, 0, 0, 0.75),rgba(81, 30, 30, 0.75));
+}
+.title-texxt{
+    text-align: center;
+    padding-bottom: 70px;
+
+}
+.title-texxt p{
+    margin: auto;
+    font-size: 80px;
+    color: #980505;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin-bottom: 3px;
+
+}
+.title-texxt p::after{  
+content: '';
+width: 50px;
+height: 35px;
+
+
+}
+.title-texxt h1{
+font-size: 30px;
+margin-bottom: 1px;
+margin-top: 2px;
+}
+.title-texxt P1{
+ font-size: 25px;
+margin-bottom: 1px;
+margin-top: 2px;
+}
+.title-texxt h2{
+    font-size: 30px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    }
+.featurebox{
+
+width: 80%;
+margin: auto;
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+text-align: left;
+
+}
+.aboutt{
+    flex-basis: 50%;
+}
+.feature-video{
+    flex-basis: 50%;
+    margin: auto;
+}
+.feature-video video{
+width: 120%;
+height: auto;
+border-radius: 50px;
+    }
+.aboutt h1 { 
+    text-align: left;
+    margin: bottom 10px;
+     font-weight: 100;
+     color: #fff;
+}
+.feature video-container{
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+    #help{
+        width: 100%;
+        padding: 170px 0;
+        background-image: linear-gradient(rgba(81, 30, 30, 0.479),rgba(0, 0, 0, 0.75),rgba(81, 30, 30, 0.75));
+    }
+    #contact{
+        width: 100%;
+        padding: 90px 0;
+        background-image: linear-gradient(rgba(81, 30, 30, 0.479),rgba(0, 0, 0, 0.75),rgba(81, 30, 30, 0.75));
+    }
+ .content-box{
+    width:55% ;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: auto;
+ }
+.single-contact{
+    flex-basis: 25%;
+    text-align: center;
+    border-radius: 6px;
+    margin-bottom: 20%;
+    color:#281e1e;
+}
+.single-contact img{
+width: 5px;;
+border-radius: 2px;
+right: -250px;
+}
