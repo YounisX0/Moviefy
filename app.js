@@ -3,11 +3,14 @@ const mongoose = require('mongoose');
 const movieRoutes = require('./routes/movies');
 const userRoutes = require('./routes/users');
 const Movie = require('./models/movie');
-const User=require('./models/user');
+const User = require('./models/user');
 
 const app = express();
 
-mongoose.connect("mongodb+srv://ahmedyounis:2004@cluster.j390qaw.mongodb.net/Moviefy?retryWrites=true&w=majority&appName=cluster", {
+app.use('/css', express.static('css'));
+app.use('/js', express.static('js'));
+
+mongoose.connect("mongodb+srv://ahmedyounis:2004@cluster.j390qaw.mongodb.net/Moviefy", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -18,11 +21,12 @@ mongoose.connect("mongodb+srv://ahmedyounis:2004@cluster.j390qaw.mongodb.net/Mov
   console.error("Connection to MongoDB failed:", error);
 });
 
+app.set('view engine', 'ejs'); 
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use('/movies', movieRoutes);
 app.use('/users', userRoutes);
-
 
 app.post("/movies", async (req, res) => {
   const { title, director, year, genre } = req.body;
@@ -58,6 +62,17 @@ app.post("/users", async (req, res) => {
     res.status(201).send("New Movie has been saved");
   } catch (error) {
     res.status(500).send(error.message);
+  }
+});
+
+app.get('/data', async (req, res) => {
+  try {
+    const movies = await Movie.find();
+    const users = await User.find();
+    res.render('admin', { movies: movies, users: users });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error fetching data');
   }
 });
 
