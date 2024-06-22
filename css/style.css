@@ -17,6 +17,18 @@
     --text-color: #fcfeff;
 
 }
+html::-webkit-scrollbar{
+    width: 0.5rem;
+    background: transparent;
+}
+html::-webkit-scrollbar-thumb{
+    background: var(--main-color);
+
+}
+::selection{
+    background: var(--main-color);
+    color: var(--text-color);
+}
 a{
     text-decoration: none;
 }
