@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
       passwordMismatch.style.display = 'none';
     }
   });
-AAAAAAA
+
   // Form submission handling
   document.getElementById('signupForm').addEventListener('submit', function(event) {
     if (passwordInput.value !== confPasswordInput.value) {
@@ -94,7 +94,7 @@ AAAAAAA
     } else {
       passwordMismatch.style.display = 'none';
       // Redirect to indexpage1.html upon successful form submission
-      window.location.href = '';
+      window.location.href = 'indexpage1.html';
     }
   });
 
@@ -156,3 +156,4 @@ AAAAAAA
   monthDropdown.addEventListener('change', populateDays);
   yearDropdown.addEventListener('change', populateDays);
 });
+
