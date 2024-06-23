@@ -1,0 +1,60 @@
+form {
+    max-width: 600px;
+    background-color: #2a2a3e;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  form label {
+    display: block;
+    margin-bottom: 10px;
+    color: #ffffff;
+  }
+  form input[type="text"],
+  form input[type="number"],
+  form input[type="email"],
+  form input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    background-color: #333344;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+  }
+  form button[type="submit"] {
+    background-color: #b70303;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  form button[type="submit"]:hover {
+    background-color: #681010;
+  }
+  .upload-input {
+display: block;
+margin-top: 10px;
+margin-bottom: 20px; 
+}
+
+.upload-input::-webkit-file-upload-button {
+padding: 6px 12px;
+background-color: #5bc0de; 
+color: white;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.upload-input::-webkit-file-upload-button:hover {
+background-color: #31b0d5;
+}
+
+form button[type="submit"]:hover {
+background-color: #681010;
+}

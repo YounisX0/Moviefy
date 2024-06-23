@@ -4,13 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
   <link rel="stylesheet" href="../css/adminstyle.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-    <link rel="stylesheet" href="../css/adminstyle.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <title>Admin Panel</title>
 </head>
 <body>
@@ -21,18 +17,26 @@
     </a>
     <ul class="side-menu top">
       <li>
-        <a href="#">
-          <i class='bx bxs-dashboard' style='color:#ffffff' ></i>
+        <a href="/admin">
+          <i class='bx bxs-dashboard' style='color:#ffffff'></i>
           <span class="text">Dashboard</span>
         </a>
       </li>
       <li>
-
-        <a href="indexpage1.html">
-
+        <a href="/movies/add">
+          <i class='bx bxs-movie'></i>
+          <span class="text">Add Movie</span>
+        </a>
+      </li>
+      <li>
+        <a href="/users/add">
+          <i class='bx bxs-user-plus'></i>
+          <span class="text">Add User</span>
+        </a>
+      </li>
+      <li>
         <a href="../html/index.html">
-
-          <i class='bx bx-log-out' style='color:#ffffff' ></i>
+          <i class='bx bx-log-out' style='color:#ffffff'></i>
           <span class="text">Log out</span>
         </a>
       </li>
@@ -40,7 +44,7 @@
   </section>
   <section id="content">
     <nav class="navbar">
-      <i class='bx bx-menu' style='color:#ffffff' ></i>
+      <i class='bx bx-menu' style='color:#ffffff'></i>
       <a href="#" class="nav-link">Categories</a>
       <form action="#">
         <div class="form-input">
@@ -73,7 +77,7 @@
       </div>
       <ul class="box-info">
         <li>
-          <i class='bx bx-user' style='color:#ffffff' ></i>
+          <i class='bx bx-user' style='color:#ffffff'></i>
           <span class="text">
             <h3><%= users.length %></h3>
             <p>Users</p>
@@ -90,7 +94,7 @@
           <i class='bx bx-group'></i>
           <span class="text">
             <h3>4</h3>
-            <p>Team</p>
+            <p>Team Members</p>
           </span>
         </li>
       </ul>
@@ -99,8 +103,6 @@
           <div class="head">
             <h3>Movies List</h3>
             <box-icon name='search'></box-icon>
-            <i class='bx bx-plus'></i>
-            <i class='bx bx-filter' style='color:#ffffff' ></i>
           </div>
           <table>
             <thead>
@@ -114,14 +116,16 @@
             </thead>
             <tbody>
               <% movies.forEach(movie => { %>
-                <tr>
+                <tr id="movie-<%= movie._id %>">
                   <td><%= movie.title %></td>
                   <td><%= movie.director %></td>
-                  <td><%= movie.year %></td>
+                  <td class="year-column"><%= movie.year %></td>
                   <td><%= movie.genre %></td>
-                  <td> 
-                    <button>Edit</button>
-                    <button>Delete</button>
+                  <td>
+                    <a href="/movies/<%= movie._id %>/edit" class="btn edit-movie-btn"><i class='bx bxs-edit-alt'></i></a>
+                    <form class="delete-movie-form" data-id="<%= movie._id %>" style="display:inline;">
+                      <button class="btn delete-movie-btn" type="submit"><i class='bx bxs-minus-circle'></i></button>
+                    </form>
                   </td>
                 </tr>
               <% }); %>
@@ -131,38 +135,65 @@
         <div class="todo">
           <div class="head">
             <h3>Users List</h3>
-            <i class='bx bx-plus'></i>
-            <i class='bx bx-filter' style='color:#ffffff' ></i>
           </div>
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Options</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% users.forEach(user => { %>
-                <tr>
-                  <td><%= user.name %></td>
-                  <td><%= user.email %></td>
-                  <td>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                  </td>
-                </tr>
-              <% }); %>
-            </tbody>
-          </table>
+          <ul class="todo-list">
+            <% users.forEach(user => { %>
+              <li>
+                <div class="user-details">
+                  <p><%= user.name %></p>
+                  <p><%= user.email %></p>
+                </div>
+                <a href="/users/<%= user._id %>/edit" class="btn edit-user-btn"><i class='bx bxs-edit-alt'></i></a>
+                <form action="/users/<%= user._id %>?_method=DELETE" method="POST" style="display:inline;">
+                  <button class="btn" type="submit"><i class='bx bxs-minus-circle'></i></button>
+                </form>
+              </li>
+            <% }); %>
+          </ul>
         </div>
       </div>
     </main>
   </section>
-
- <!-- <script src="../javascript/admin.js"></script>-->
-</body>
-</html>
- <script src="../javascript/admin.js"></script>
+  <script src="/js/admin.js"></script>
+  <script>
+    document.querySelectorAll('.delete-user-form').forEach(form => {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const userId = form.dataset.id;
+  
+        try {
+          const response = await fetch(`/users/${userId}?_method=DELETE`, {
+            method: 'POST',
+          });
+  
+          if (response.ok) {
+            const data = await response.json();
+            document.getElementById(`user-${userId}`).remove();
+            Swal.fire({
+              title: 'Success!',
+              text: `User with id ${userId} has been removed.`,
+              icon: 'success',
+              confirmButtonText: 'OK'
+            });
+          } else {
+            const errorData = await response.json();
+            Swal.fire({
+              title: 'Error!',
+              text: errorData.message,
+              icon: 'error',
+              confirmButtonText: 'OK'
+            });
+          }
+        } catch (error) {
+          Swal.fire({
+            title: 'Error!',
+            text: 'There was an issue removing the user.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>

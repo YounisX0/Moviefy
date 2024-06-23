@@ -2,15 +2,17 @@ const express = require('express');
 const mongoose = require('mongoose');
 const movieRoutes = require('./routes/movies');
 const userRoutes = require('./routes/users');
+const path = require('path');
+const methodOverride = require('method-override');
 const Movie = require('./models/movie');
 const User = require('./models/user');
+const bodyParser = require('body-parser');
 
 const app = express();
-
-
-app.use('/css', express.static('css'));
-app.use('/js', express.static('js'));
-
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(methodOverride('_method')); 
 
 mongoose.connect("mongodb+srv://ahmedyounis:2004@cluster.j390qaw.mongodb.net/Moviefy", {
   useNewUrlParser: true,
