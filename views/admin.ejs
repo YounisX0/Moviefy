@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../css/adminstyle.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <link rel="stylesheet" href="../css/adminstyle.css">
+    <link rel="stylesheet" href="/css/adminstyle.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
   <title>Admin Panel</title>
@@ -27,11 +27,19 @@
         </a>
       </li>
       <li>
-
-        <a href="indexpage1.html">
-
+        <a href="/movies/add">
+          <i class='bx bxs-movie'></i>
+          <span class="text">Add Movie</span>
+        </a>
+      </li>
+      <li>
+        <a href="/users/add">
+          <i class='bx bxs-user-plus'></i>
+          <span class="text">Add User</span>
+        </a>
+      </li>      
+      <li>
         <a href="../html/index.html">
-
           <i class='bx bx-log-out' style='color:#ffffff' ></i>
           <span class="text">Log out</span>
         </a>
@@ -90,7 +98,7 @@
           <i class='bx bx-group'></i>
           <span class="text">
             <h3>4</h3>
-            <p>Team</p>
+            <p>Team Members</p>
           </span>
         </li>
       </ul>
@@ -99,8 +107,6 @@
           <div class="head">
             <h3>Movies List</h3>
             <box-icon name='search'></box-icon>
-            <i class='bx bx-plus'></i>
-            <i class='bx bx-filter' style='color:#ffffff' ></i>
           </div>
           <table>
             <thead>
@@ -117,11 +123,11 @@
                 <tr>
                   <td><%= movie.title %></td>
                   <td><%= movie.director %></td>
-                  <td><%= movie.year %></td>
+                  <td class="year-column"><%= movie.year %></td>
                   <td><%= movie.genre %></td>
                   <td> 
-                    <button>Edit</button>
-                    <button>Delete</button>
+                    <button class="btn"><i class='bx bxs-edit-alt'></i></button>
+                <button class="btn"><i class='bx bxs-minus-circle'></i></button>
                   </td>
                 </tr>
               <% }); %>
@@ -131,38 +137,26 @@
         <div class="todo">
           <div class="head">
             <h3>Users List</h3>
-            <i class='bx bx-plus'></i>
-            <i class='bx bx-filter' style='color:#ffffff' ></i>
           </div>
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Options</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% users.forEach(user => { %>
-                <tr>
-                  <td><%= user.name %></td>
-                  <td><%= user.email %></td>
-                  <td>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                  </td>
-                </tr>
-              <% }); %>
-            </tbody>
-          </table>
+          <ul class="todo-list">
+            <% users.forEach(user => { %>
+              <li>
+                <div class="user-details">
+                  <p><%= user.name %></p>
+                  <p><%= user.email %></p>
+                </div>
+                <button class="btn"><i class='bx bxs-edit-alt'></i></button>
+                <button class="btn"><i class='bx bxs-minus-circle'></i></button>
+              </li>
+            <% }); %>
+          </ul>
         </div>
       </div>
     </main>
   </section>
 
- <!-- <script src="../javascript/admin.js"></script>-->
+  <script src="/js/admin.js"></script>
 </body>
-</html>
- <script src="../javascript/admin.js"></script>
-</body>
-</html>
+
+ 
+

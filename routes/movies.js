@@ -20,5 +20,8 @@ router.get('/', async (req, res) => {
     res.status(500).send(error);
   }
 });
+router.get('/add', (req, res) => {
+  res.render('addMovie');
+});
 
 module.exports = router;
