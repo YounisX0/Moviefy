@@ -8,6 +8,10 @@ const User = require('./models/user');
 const app = express();
 
 
+app.use('/css', express.static('css'));
+app.use('/js', express.static('js'));
+
+
 mongoose.connect("mongodb+srv://ahmedyounis:2004@cluster.j390qaw.mongodb.net/Moviefy", {
   useNewUrlParser: true,
   useUnifiedTopology: true
