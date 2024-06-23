@@ -10,44 +10,7 @@
 
     <link rel="stylesheet" href="/css/adminstyle.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <style>
-        form {
-          max-width: 600px;
-          background-color: #2a2a3e;
-          padding: 20px;
-          border-radius: 8px;
-          box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-        form label {
-          display: block;
-          margin-bottom: 10px;
-          color: #ffffff;
-        }
-        form input[type="text"],
-        form input[type="email"],
-        form input[type="password"] {
-          width: calc(100% - 20px);
-          padding: 8px;
-          font-size: 16px;
-          margin-bottom: 15px;
-          background-color: #333344;
-          color: #ffffff;
-          border: none;
-          border-radius: 4px;
-        }
-        form button[type="submit"] {
-          background-color: #b70303;
-          color: #ffffff;
-          border: none;
-          padding: 10px 20px;
-          cursor: pointer;
-          border-radius: 4px;
-          transition: background-color 0.3s ease;
-        }
-        form button[type="submit"]:hover {
-          background-color: #681010;
-        }
-      </style>
+    <link rel="stylesheet" href="/css/add.css">
   <title>Add Movie</title>
 </head>
 <body>
@@ -58,7 +21,7 @@
     </a>
     <ul class="side-menu top">
       <li>
-        <a href="#">
+        <a href="/data">
           <i class='bx bxs-dashboard' style='color:#ffffff' ></i>
           <span class="text">Dashboard</span>
         </a>
@@ -117,15 +80,17 @@
         </div>
       </div>
       <main>
-        <form action="/users" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <button type="submit">Add User</button>
-      </form>
+        <form action="/users" method="POST" enctype="multipart/form-data">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+          <label for="avatar">Profile picture:</label>
+          <input type="file" id="avatar" name="avatar" class="upload-input" accept="image/*">
+          <button type="submit">Add User</button>
+        </form>
       </main>
       <script src="/js/admin.js"></script>
 </body>
