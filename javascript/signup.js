@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
       passwordMismatch.style.display = 'none';
     }
   });
-
+AAAAAAA
   // Form submission handling
   document.getElementById('signupForm').addEventListener('submit', function(event) {
     if (passwordInput.value !== confPasswordInput.value) {
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       passwordMismatch.style.display = 'none';
       // Redirect to indexpage1.html upon successful form submission
-      window.location.href = 'html\indexpage1.html';
+      window.location.href = '';
     }
   });
 
