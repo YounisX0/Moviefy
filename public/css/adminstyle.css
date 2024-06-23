@@ -55,7 +55,21 @@ li {
   button:hover {
 	background-color: #681010;
   }
-  
+  .edit-movie-btn,
+.edit-user-btn{
+	background-color: #b70303;
+	color: white;
+	border: none;
+	padding: 5px 10px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	border-radius: 4px;
+	font-size: 14px;
+}
+  .edit-movie-btn:hover,
+.edit-user-btn:hover {
+	background-color: #681010;
+}
 html {
 	overflow-x: hidden;
 }

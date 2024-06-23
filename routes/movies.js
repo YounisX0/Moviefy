@@ -1,51 +1,50 @@
+
+
 const express = require('express');
 const router = express.Router();
 const Movie = require('../models/movie');
 const multer = require('multer');
 
-
 const upload = multer({
   limits: {
-    fileSize: 10 * 1024 * 1024, 
+    fileSize: 10 * 1024 * 1024,
   },
 });
 
-router.post('/', upload.single('poster'), async (req, res) => {
+
+router.get('/:id/edit', async (req, res) => {
+  try {
+    const movie = await Movie.findById(req.params.id);
+    if (!movie) {
+      return res.status(404).send("Movie not found");
+    }
+    res.render('editMovie', { movie });
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
+
+router.put('/:id', upload.single('poster'), async (req, res) => {
   const { title, director, year, genre } = req.body;
 
   try {
-    const newMovie = new Movie({
+    const updatedMovie = await Movie.findByIdAndUpdate(req.params.id, {
       title,
       director,
       year,
       genre,
-    });
+      poster: req.file ? req.file.buffer : undefined
+    }, { new: true });
 
-    if (req.file) {
-      newMovie.poster = req.file.buffer;
+    if (!updatedMovie) {
+      return res.status(404).send("Movie not found");
     }
 
-   
-    await newMovie.save();
-
-    res.status(201).send("New movie has been created");
+    res.status(200).send("Movie updated successfully");
   } catch (error) {
     res.status(500).send(error.message);
   }
-});
-
-
-router.get('/', async (req, res) => {
-  try {
-    const movies = await Movie.find();
-    res.status(200).send(movies);
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
-});
-
-router.get('/add', (req, res) => {
-  res.render('addMovie'); 
 });
 
 module.exports = router;
