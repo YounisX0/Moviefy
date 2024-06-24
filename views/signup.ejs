@@ -1,49 +1,67 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Signup</title>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/upstyle.css">
+  <link rel="stylesheet" href="../css/swiper-bundle.min.css">
+  <link rel="shortcut icon" href="../img/fav-icon.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
 </head>
 <body>
-  <div class="form-container">
-    <h2>Signup</h2>
-    <form action="/signup" method="post">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="username" placeholder="Enter your name" required autocomplete="off">
+  <header>
+    <div class="nav container">
+      <a href="../html/mainpage.html" class="logo">
+        Movi<span>Fey</span>
+      </a>
+      <div class="toggle" id="modeToggle">
+        <i class="fa-solid fa-moon toggle-icon"></i>
+        <i class="fa-solid fa-sun toggle-icon"></i>
+        <div class="toggle-ball"></div>
       </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <div class="password-input-container">
-          <input type="password" name="password" id="password" placeholder="Password" required>
-          <span class="toggle-password" onclick="togglePasswordVisibility()">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-              <path fill="none" d="M0 0h24v24H0z"/>
-              <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm0-2c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm1-5h-2v2h2v-2z"/>
-            </svg>
-          </span>
-        </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <form id="signupForm" action="/users" method="POST" enctype="multipart/form-data">
+      <br><br><br><br><br>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="password">Set a Password</label>
+      <div style="position: relative;">
+        <input type="password" id="password" name="password" required>
+        <i class="fas fa-eye" id="togglePassword1" style="position: absolute; right: 10px; top: 40%; transform: translateY(-50%); font-size: 20px; color: black; cursor: pointer;"></i>
       </div>
-      <button type="submit" class="submit-btn">Signup</button>
+
+      <label for="conf_password">Confirm Password</label>
+      <div style="position: relative;">
+        <input type="password" id="conf_password" name="conf_password" required>
+        <i class="fas fa-eye" id="togglePassword2" style="position: absolute; right: 10px; top: 40%; transform: translateY(-50%); font-size: 20px; color: black; cursor: pointer;"></i>
+        <span id="passwordError" style="color: red; display: none;">Passwords do not match</span>
+      </div>
+
+      <label for="avatar">Upload Photo</label>
+      <input type="file" id="avatar" name="avatar" class="upload-input" accept="image/*">
+
+      <input type="submit" value="Submit">
     </form>
- 
   </div>
 
-  <script>
-    function togglePasswordVisibility() {
-      var passwordInput = document.getElementById('password');
-      var toggleIcon = document.querySelector('.toggle-password svg');
+  <div id="message">
+    <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+    <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+    <p id="number" class="invalid">A <b>number</b></p>
+    <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+  </div>
 
-      if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-        toggleIcon.innerHTML = '<path fill="none" d="M0 0h24v24H0z"/><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm0-2c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm1-5h-2v2h2v-2z"/>';
-      } else {
-        passwordInput.type = 'password';
-        toggleIcon.innerHTML = '<path fill="none" d="M0 0h24v24H0z"/><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm0-2c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm1-5h-2v2h2v-2z"/><path d="M12 8h-2v2h2v-2z"/>';
-      }
-    }
-  </script>
+  <script src="../js/script.js"></script>
+  <script src="../js/swiper-bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/theme-toggle.js"></script>
 </body>
 </html>

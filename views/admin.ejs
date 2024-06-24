@@ -123,7 +123,7 @@
                   <td><%= movie.genre %></td>
                   <td>
                     <a href="/movies/<%= movie._id %>/edit" class="btn edit-movie-btn"><i class='bx bxs-edit-alt'></i></a>
-                    <form class="delete-movie-form" data-id="<%= movie._id %>" style="display:inline;">
+                    <form action="/movies/<%= movie._id %>?_method=DELETE" method="POST" style="display:inline;">
                       <button class="btn delete-movie-btn" type="submit"><i class='bx bxs-minus-circle'></i></button>
                     </form>
                   </td>

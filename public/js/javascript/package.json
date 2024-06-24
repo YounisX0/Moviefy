@@ -1,0 +1,17 @@
+{
+  "name": "moviefy",
+  "version": "1.0.0",
+  "description": "A responsive movie website that includes :\r Main page (SIGN-IN, SIGN-UP, ABOUT, FAQ, CONTACT).\r Login-Page.\r Sign-Up page.\r Movies page that include Movies sections.\r A page for Each movie that contains its details (Trailer, Name, Cast-Names, Rating).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "mongoose": "^8.4.1",
+    "nodemon": "^3.1.3"
+  }
+}

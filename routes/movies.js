@@ -11,6 +11,55 @@ const upload = multer({
   },
 });
 
+router.post('/', upload.single('poster'), async (req, res) => {
+  const { title, director, year, genre } = req.body;
+
+  try {
+    const newMovie = new Movie({
+      title,
+      director,
+      year,
+      genre,
+    });
+    if (req.file) {
+      newMovie.poster = req.file.buffer;
+    }
+    await newMovie.save();
+
+    res.status(201).send("New movie has been created");
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
+router.get('/', async (req, res) => {
+  try {
+    const movies = await Movie.find();
+    res.status(200).send(movies);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
+
+router.get('/add', (req, res) => {
+  res.render('addMovie'); 
+});
+
+router.delete('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const movie = await Movie.findByIdAndDelete(id);
+
+    if (!movie) {
+      return res.status(404).json({ message: 'Movie not found' });
+    }
+
+    res.status(200).json({ message: `Movie with id ${id} has been deleted` });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
 router.get('/:id/edit', async (req, res) => {
   try {
@@ -46,5 +95,6 @@ router.put('/:id', upload.single('poster'), async (req, res) => {
     res.status(500).send(error.message);
   }
 });
+
 
 module.exports = router;
