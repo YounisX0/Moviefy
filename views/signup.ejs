@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>Signup</h2>
+    <form action="/signup" method="post">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="username" placeholder="Enter your name" required autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="password-input-container">
+          <input type="password" name="password" id="password" placeholder="Password" required>
+          <span class="toggle-password" onclick="togglePasswordVisibility()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+              <path fill="none" d="M0 0h24v24H0z"/>
+              <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm0-2c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm1-5h-2v2h2v-2z"/>
+            </svg>
+          </span>
+        </div>
+      </div>
+      <button type="submit" class="submit-btn">Signup</button>
+    </form>
+ 
+  </div>
+
+  <script>
+    function togglePasswordVisibility() {
+      var passwordInput = document.getElementById('password');
+      var toggleIcon = document.querySelector('.toggle-password svg');
+
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.innerHTML = '<path fill="none" d="M0 0h24v24H0z"/><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm0-2c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm1-5h-2v2h2v-2z"/>';
+      } else {
+        passwordInput.type = 'password';
+        toggleIcon.innerHTML = '<path fill="none" d="M0 0h24v24H0z"/><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm0-2c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm1-5h-2v2h2v-2z"/><path d="M12 8h-2v2h2v-2z"/>';
+      }
+    }
+  </script>
+</body>
+</html>

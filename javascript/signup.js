@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       passwordMismatch.style.display = 'none';
       // Redirect to indexpage1.html upon successful form submission
-      window.location.href = 'indexpage1.html';
+      window.location.href = 'html\indexpage1.html';
     }
   });
 
@@ -156,4 +156,3 @@ document.addEventListener('DOMContentLoaded', () => {
   monthDropdown.addEventListener('change', populateDays);
   yearDropdown.addEventListener('change', populateDays);
 });
-

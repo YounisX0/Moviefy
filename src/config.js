@@ -1,32 +1,29 @@
 const mongoose = require("mongoose");
 
-const connectToDatabase = async () => {
-    try {
-        await mongoose.connect("mongodb://127.0.0.1:27017/login", {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
-        console.log("Database connected successfully");
-    } catch (error) {
-        console.error("Database connection error:", error);
-    }
-};
+// Connect to MongoDB
+const connect = mongoose.connect('mongodb://localhost:27017/login') ;
 
-connectToDatabase();
+// Check if the database connected successfully
+connect.then(() => {
+    console.log("Database connected successfully");
+}).catch((err) => {
+    console.error("Database connection error:", err);
+});
 
-// Create a schema
+// Define the schema
 const LoginSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
     },
     password: {
         type: String,
-        required: true
-    }
+        required: true,
+    },
 });
 
-// Collection part
-const LoginModel = mongoose.model("users", LoginSchema);
+// Create a model based on the schema
+const collection = mongoose.model("users", LoginSchema);
 
-module.exports = LoginModel;
+// Export the model
+module.exports = collection;
