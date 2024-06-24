@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.forgot-psw-page {
+  background-image: linear-gradient(#1e1e2a, #1e1e2a);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  text-align: center;
+}
+
+.form {
+  position: absolute;
+  background: transparent; /* Set background to transparent */
+  text-align: center;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  padding: 20px;
+  width: 550px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.form input {
+  font-family: "Times New Roman", Times, serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: none;
+  margin: auto;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+.form button {
+  font-weight: bold;
+  width: 100%;
+  border-radius: 30px;
+  padding: 15px;
+}
+
+.form button:hover,
+.form button:focus {
+  background: rgb(115, 74, 74);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+}
+
+.form button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2.5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.title-section {
+  margin-bottom: 30px;
+}
+
+.title {
+  color: #e5e7e9;
+  font-size: 25px;
+  font-weight: 500;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+
+.label-title {
+  color: white;
+  padding: 5%;
+  margin: 5%;
+}
+
+/* Add these styles to your CSS file */
+
+body.light-mode {
+  background-color: #f0f0f0;
+  color: black;
+}
+
+body.light-mode .form {
+  background-color: black;
+  color: white;
+}
+
+body.light-mode input,
+body.light-mode button {
+  background-color: #333;
+  color: white;
+  border: 1px solid #444;
+}
+@media(max-width:500px){
+  .form input {
+    width: 55%;
+}
+.form button {
+  font-weight: normal;
+  width: 40%;}
+}
