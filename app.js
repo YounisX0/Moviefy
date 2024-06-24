@@ -59,13 +59,13 @@ app.post("/movies", async (req, res) => {
 });
 
 app.post("/users", async (req, res) => {
-  const { name, email, password} = req.body;
+  const { name, email, password } = req.body;
 
   try {
     const newUser = new User({
       name: name,
       email: email,
-      year: password,
+      password: password,
     });
 
     await newUser.save();
