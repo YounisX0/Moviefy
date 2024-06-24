@@ -119,6 +119,10 @@ app.get('/data', async (req, res) => {
   }
 });
 
+app.get('/login', (req, res) => {
+  res.render('login');
+});
+
 const PORT = process.env.PORT || 5500;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

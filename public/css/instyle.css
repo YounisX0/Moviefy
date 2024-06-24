@@ -1,0 +1,211 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.body {
+  background-image: linear-gradient(#1e1e2a, #1e1e2a);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form {
+  position: absolute;
+  background: transparent;
+  text-align: center;
+  box-shadow:none;
+  padding: 13px;
+  width: 550px;
+}
+
+
+.form input {
+  font-family: "Times New Roman", Times, serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  font-size: 18px;
+  border-radius: 15px;
+}
+
+.form button {
+  font-weight: bold;
+  width: 100%;
+  border-radius: 30px;
+  padding: 15px;
+}
+
+.form button:hover,
+.form button:focus {
+  background: rgb(244, 106, 106);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+}
+
+.form button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2.5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.form .message {
+  margin: 6px 6px;
+  color: #808080;
+  font-size: 11px;
+  text-align: center;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.form-link span,
+.form-link a {
+  font-size: 14px;
+  font-weight: 400;
+  color: #eff0f3;
+  height: 5px;
+}
+
+.form a {
+  color: blue;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.toggle {
+  width: 40px;
+  height: 20px;
+  background-color: black;
+  border-radius: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+}
+.toggle-icon {
+  color: goldenrod;
+}
+.toggle-ball {
+  width: 18px;
+  height: 18px;
+  background-color: white;
+  position: absolute;
+  right: 1px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.5s ease all;
+}
+.toggle.active {
+  background-color: whitesmoke;
+}
+
+.toggle-ball.active {
+  background-color: black;
+  transform: translateX(-20px);
+}
+
+body.active {
+  background: whitesmoke;
+}
+
+header.active {
+  background: whitesmoke;
+}
+
+.logo.active {
+  color: black;
+}
+.nav-link.active {
+  color: black;
+}
+.copy.active {
+  color: black;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+
+#message {
+  display: none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+.gmail-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f2efef;
+  color: black;
+  border: none;
+  border-radius: 30px;
+  padding: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.gmail-btn i {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.gmail-btn:hover,
+.gmail-btn:focus {
+  background-color: #0a0201;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+}
+
+.gmail-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2.5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.or-line {
+  text-align: center;
+  margin: 10px 0;
+  color: #777; /* Adjust color as needed */
+}
+
+.or-line::before,
+.or-line::after {
+  content: "";
+  display: inline-block;
+  width: 100px; /* Adjust width as needed */
+  height: 2px;
+  background-color: #777; /* Adjust color as needed */
+  vertical-align: middle;
+}
+
+.light-mode-text {
+  color: black !important;
+}
+.dark-mode {
+  background-color: black;
+  color: white;
+}
