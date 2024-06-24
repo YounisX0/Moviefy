@@ -8,16 +8,12 @@ const Movie = require('./models/movie');
 const User = require('./models/user');
 const bodyParser = require('body-parser');
 
-// Middleware and Configurations
+const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(methodOverride('_method'));
-app.set('view engine', 'ejs');
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+app.use(methodOverride('_method')); 
 
-// MongoDB Connection
 mongoose.connect("mongodb+srv://ahmedyounis:2004@cluster.j390qaw.mongodb.net/Moviefy", {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -29,59 +25,55 @@ mongoose.connect("mongodb+srv://ahmedyounis:2004@cluster.j390qaw.mongodb.net/Mov
   console.error("Connection to MongoDB failed:", error);
 });
 
-// Routes for Views
-app.get("/", (req, res) => {
-    res.render("login");
-});
+app.set('view engine', 'ejs'); 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.get("/signup", (req, res) => {
-    res.render("signup");
-});
+app.use('/movies', movieRoutes);
+app.use('/users', userRoutes);
 
-// Routes for Movies
 app.post("/movies", async (req, res) => {
   const { title, director, year, genre } = req.body;
 
   try {
     const newMovie = new Movie({
-      title,
-      director,
-      year,
-      genre
+      title: title,
+      director: director,
+      year: year,
+      genre: genre
     });
 
     await newMovie.save();
+
     res.status(201).send("New Movie has been saved");
   } catch (error) {
     res.status(500).send(error.message);
   }
 });
 
-// Routes for Users
-app.post("/signup", async (req, res) => {
-  const { username, password } = req.body;
+app.post("/users", async (req, res) => {
+  const { name, email, password} = req.body;
 
   try {
-    const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({
-      username,
-      password: hashedPassword
+      name: name,
+      email: email,
+      year: password,
     });
 
-    await newUser.save();
-    res.status(201).send("User registered successfully");
+    await newMovie.save();
+
+    res.status(201).send("New Movie has been saved");
   } catch (error) {
-    console.error('Error registering user:', error);
-    res.status(500).send('Error registering user');
+    res.status(500).send(error.message);
   }
 });
 
-// Fetch Data for Admin View
 app.get('/data', async (req, res) => {
   try {
     const movies = await Movie.find();
     const users = await User.find();
-    res.render('admin', { movies, users });
+    res.render('admin', { movies: movies, users: users });
   } catch (error) {
     console.error(error);
     res.status(500).send('Error fetching data');
