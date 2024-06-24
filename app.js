@@ -123,6 +123,11 @@ app.get('/login', (req, res) => {
   res.render('login');
 });
 
+app.get('/mainpage', (req, res) => {
+  res.render('mainpage');
+});
+
+
 const PORT = process.env.PORT || 5500;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

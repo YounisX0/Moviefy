@@ -8,6 +8,76 @@
   <link rel="shortcut icon" href="../img/fav-icon.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
+  <style>
+    .valid { color: green; }
+    .invalid { color: red; }
+    #message { display: none; }
+
+    /* Adjusted styling for input fields */ 
+    input[type="text"], input[type="email"], input[type="password"], input[type="file"] {
+      border-radius: 8px; 
+      padding: 10px;
+      border: 1px solid #ccc;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+
+    /* Style for the submit button */
+    input[type="submit"] {
+      border-radius: 8px; 
+      padding: 10px 20px;
+      background-color: #8ea8f0;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #1e7ef4;
+    }
+
+    /* Style for the eye icon */
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 40%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: black;
+      cursor: pointer;
+    }
+
+    /* Dark mode styles */
+    body.dark-mode {
+      background-color: #fefafa;
+      color: #fff;
+    }
+
+    body.dark-mode input[type="text"],
+    body.dark-mode input[type="email"],
+    body.dark-mode input[type="password"],
+    body.dark-mode input[type="file"],
+    body.dark-mode label {
+      background-color: #555;
+      color: #fff;
+      border: 1px solid #777;
+    }
+
+    body.dark-mode input[type="submit"] {
+      background-color: #4CAF50;
+    }
+
+    body.dark-mode .toggle {
+      background-color: #555;
+      border: 1px solid #777;
+    }
+
+    body.dark-mode .toggle .toggle-ball {
+      background-color: #777;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -35,20 +105,20 @@
       <label for="password">Set a Password</label>
       <div style="position: relative;">
         <input type="password" id="password" name="password" required>
-        <i class="fas fa-eye" id="togglePassword1" style="position: absolute; right: 10px; top: 40%; transform: translateY(-50%); font-size: 20px; color: black; cursor: pointer;"></i>
+        <i class="fas fa-eye toggle-password" id="togglePassword1"></i>
       </div>
 
       <label for="conf_password">Confirm Password</label>
       <div style="position: relative;">
         <input type="password" id="conf_password" name="conf_password" required>
-        <i class="fas fa-eye" id="togglePassword2" style="position: absolute; right: 10px; top: 40%; transform: translateY(-50%); font-size: 20px; color: black; cursor: pointer;"></i>
+        <i class="fas fa-eye toggle-password" id="togglePassword2"></i>
         <span id="passwordError" style="color: red; display: none;">Passwords do not match</span>
       </div>
 
       <label for="avatar">Upload Photo</label>
       <input type="file" id="avatar" name="avatar" class="upload-input" accept="image/*">
 
-      <input type="submit" value="Submit">
+      <input type="submit" value="Submit" >
     </form>
   </div>
 
@@ -56,10 +126,99 @@
     <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
     <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
     <p id="number" class="invalid">A <b>number</b></p>
-    <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+  
   </div>
 
-  <script src="../js/script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const password = document.getElementById("password");
+      const confirmPassword = document.getElementById("conf_password");
+      const passwordError = document.getElementById("passwordError");
+      const togglePassword1 = document.getElementById("togglePassword1");
+      const togglePassword2 = document.getElementById("togglePassword2");
+      const modeToggle = document.getElementById("modeToggle");
+
+      // Function to toggle between light and dark mode
+      function toggleMode() {
+        document.body.classList.toggle("dark-mode");
+      }
+
+      // Event listener for mode toggle button
+      modeToggle.addEventListener("click", function () {
+        toggleMode();
+      });
+
+      togglePassword1.addEventListener("click", function () {
+        const type = password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+        this.classList.toggle("fa-eye-slash");
+      });
+
+      togglePassword2.addEventListener("click", function () {
+        const type = confirmPassword.getAttribute("type") === "password" ? "text" : "password";
+        confirmPassword.setAttribute("type", type);
+        this.classList.toggle("fa-eye-slash");
+      });
+
+      password.addEventListener("focus", function () {
+        document.getElementById("message").style.display = "block";
+      });
+
+      password.addEventListener("blur", function () {
+        document.getElementById("message").style.display = "none";
+      });
+
+      password.addEventListener("keyup", function () {
+        const lowerCaseLetters = /[a-z]/g;
+        const upperCaseLetters = /[A-Z]/g;
+        const numbers = /[0-9]/g;
+
+        if (password.value.match(lowerCaseLetters)) {
+          letter.classList.remove("invalid");
+          letter.classList.add("valid");
+        } else {
+          letter.classList.remove("valid");
+          letter.classList.add("invalid");
+        }
+
+        if (password.value.match(upperCaseLetters)) {
+          capital.classList.remove("invalid");
+          capital.classList.add("valid");
+        } else {
+          capital.classList.remove("valid");
+          capital.classList.add("invalid");
+        }
+
+        if (password.value.match(numbers)) {
+          number.classList.remove("invalid");
+          number.classList.add("valid");
+        } else {
+          number.classList.remove("valid");
+          number.classList.add("invalid");
+        }
+
+        if (password.value.length === 8) { // Adjusted validation for maximum length
+          length.classList.remove("invalid");
+          length.classList.add("valid");
+        } else {
+          length.classList.remove("valid");
+          length.classList.add("invalid");
+        }
+      });
+
+      confirmPassword.addEventListener("keyup", function () {
+        if (password.value !== confirmPassword.value) {
+          passwordError.style.display = "block";
+        } else {
+          passwordError.style.display = "none";
+        }
+      });
+
+      // Handle form submission
+     
+    });
+  </script>
+
   <script src="../js/swiper-bundle.min.js"></script>
   <script src="../js/main.js"></script>
   <script src="../js/theme-toggle.js"></script>
