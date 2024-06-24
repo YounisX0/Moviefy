@@ -35,7 +35,7 @@ app.post("/signup", async (req, res) => {
     console.log(userdata);
 });
 
-const port = 5000;
+const port = 5500;
 app.listen(port, () => {
     console.log('server running on Port: ${port}');
 })
