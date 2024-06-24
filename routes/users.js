@@ -19,29 +19,26 @@ router.post('/', upload.single('avatar'), async (req, res) => {
       return res.status(400).json({ message: 'User with this email already exists' });
     }
 
-    
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    
     const newUser = new User({
       name,
       email,
       password: hashedPassword,
     });
 
-    
     if (req.file) {
       newUser.avatar = req.file.buffer;
     }
 
-  
     await newUser.save();
 
-    res.status(201).send("New user has been created");
+    res.status(201).json({ message: "New user has been created" });
   } catch (error) {
-    res.status(500).send(error.message);
+    res.status(500).json({ message: error.message });
   }
 });
+
 
 
 router.get('/', async (req, res) => {
@@ -61,7 +58,12 @@ router.get('/add', (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    await User.findByIdAndDelete(id);
+    const user = await User.findByIdAndDelete(id);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
     res.status(200).json({ message: `User with id ${id} has been deleted` });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -94,13 +96,12 @@ router.put('/:id', upload.single('avatar'), async (req, res) => {
     }, { new: true });
 
     if (!updatedUser) {
-      return res.status(404).send("User not found");
+      return res.status(404).json({ message: "User not found" });
     }
 
-    res.status(200).send("User updated successfully");
+    res.status(200).json({ message: "User updated successfully" });
   } catch (error) {
-    res.status(500).send(error.message);
+    res.status(500).json({ message: error.message });
   }
 });
-
 module.exports = router;

@@ -26,9 +26,9 @@ router.post('/', upload.single('poster'), async (req, res) => {
     }
     await newMovie.save();
 
-    res.status(201).send("New movie has been created");
+    res.status(201).json({ message: "New movie has been created" });
   } catch (error) {
-    res.status(500).send(error.message);
+    res.status(500).json({ message: error.message });
   }
 });
 
@@ -87,14 +87,15 @@ router.put('/:id', upload.single('poster'), async (req, res) => {
     }, { new: true });
 
     if (!updatedMovie) {
-      return res.status(404).send("Movie not found");
+      return res.status(404).json({ message: "Movie not found" });
     }
 
-    res.status(200).send("Movie updated successfully");
+    res.status(200).json({ message: "Movie updated successfully" });
   } catch (error) {
-    res.status(500).send(error.message);
+    res.status(500).json({ message: error.message });
   }
 });
+
 
 
 module.exports = router;

@@ -53,7 +53,7 @@
           <h1>Dashboard</h1>
           <ul class="breadcrumb">
             <li>
-              <a class href="#">Dashboard</a>
+              <a href="#">Dashboard</a>
             </li>
             <li><i class='bx bx-chevron-right'></i></li>
             <li>
@@ -110,9 +110,7 @@
                   <td><%= movie.genre %></td>
                   <td>
                     <a href="/movies/<%= movie._id %>/edit" class="btn edit-movie-btn"><i class='bx bxs-edit-alt'></i></a>
-                    <form action="/movies/<%= movie._id %>?_method=DELETE" method="POST" style="display:inline;">
-                      <button class="btn delete-movie-btn" type="submit"><i class='bx bxs-minus-circle'></i></button>
-                    </form>
+                    <button class="btn delete-movie-btn" type="button" data-movie-id="<%= movie._id %>"><i class='bx bxs-minus-circle'></i></button>
                   </td>
                 </tr>
               <% }); %>
@@ -131,9 +129,7 @@
                   <p><%= user.email %></p>
                 </div>
                 <a href="/users/<%= user._id %>/edit" class="btn edit-user-btn"><i class='bx bxs-edit-alt'></i></a>
-                <form action="/users/<%= user._id %>?_method=DELETE" method="POST" style="display:inline;">
-                  <button class="btn" type="submit"><i class='bx bxs-minus-circle'></i></button>
-                </form>
+                <button class="btn delete-user-btn" type="button" data-user-id="<%= user._id %>"><i class='bx bxs-minus-circle'></i></button>
               </li>
             <% }); %>
           </ul>
@@ -142,42 +138,105 @@
     </main>
   </section>
   <script src="/js/admin.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
-    document.querySelectorAll('.delete-user-form').forEach(form => {
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const userId = form.dataset.id;
-  
-        try {
-          const response = await fetch(`/users/${userId}?_method=DELETE`, {
-            method: 'POST',
-          });
-  
-          if (response.ok) {
-            const data = await response.json();
-            document.getElementById(`user-${userId}`).remove();
-            Swal.fire({
-              title: 'Success!',
-              text: `User with id ${userId} has been removed.`,
-              icon: 'success',
-              confirmButtonText: 'OK'
+    document.querySelectorAll('.delete-user-btn').forEach(button => {
+      button.addEventListener('click', async (event) => {
+        event.preventDefault();
+        const userId = button.dataset.userId;
+        const confirmed = await Swal.fire({
+          title: 'Are you sure?',
+          text: 'This action cannot be undone.',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, delete it!',
+          cancelButtonText: 'Cancel'
+        });
+
+        if (confirmed.isConfirmed) {
+          try {
+            const response = await fetch(`/users/${userId}?_method=DELETE`, {
+              method: 'POST',
             });
-          } else {
-            const errorData = await response.json();
+
+            if (response.ok) {
+              const data = await response.json();
+              Swal.fire({
+                title: 'Deleted!',
+                text: 'User removed successfully.',
+                icon: 'success',
+                timer: 1500,
+                timerProgressBar: true,
+                showConfirmButton: false
+              });
+              button.closest('li').remove();
+            } else {
+              const errorData = await response.json();
+              Swal.fire({
+                title: 'Error!',
+                text: errorData.message,
+                icon: 'error',
+                confirmButtonText: 'OK'
+              });
+            }
+          } catch (error) {
             Swal.fire({
               title: 'Error!',
-              text: errorData.message,
+              text: 'There was an issue removing the user.',
               icon: 'error',
               confirmButtonText: 'OK'
             });
           }
-        } catch (error) {
-          Swal.fire({
-            title: 'Error!',
-            text: 'There was an issue removing the user.',
-            icon: 'error',
-            confirmButtonText: 'OK'
-          });
+        }
+      });
+    });
+    document.querySelectorAll('.delete-movie-btn').forEach(button => {
+      button.addEventListener('click', async (event) => {
+        event.preventDefault();
+        const movieId = button.dataset.movieId;
+        const confirmed = await Swal.fire({
+          title: 'Are you sure?',
+          text: 'This action cannot be undone.',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, delete it!',
+          cancelButtonText: 'Cancel'
+        });
+
+        if (confirmed.isConfirmed) {
+          try {
+            const response = await fetch(`/movies/${movieId}?_method=DELETE`, {
+              method: 'POST',
+            });
+
+            if (response.ok) {
+              const data = await response.json();
+              Swal.fire({
+                title: 'Deleted!',
+                text: 'Movie removed successfully.',
+                icon: 'success',
+                timer: 1500,
+                timerProgressBar: true,
+                showConfirmButton: false
+              });
+              button.closest('tr').remove();
+            } else {
+              const errorData = await response.json();
+              Swal.fire({
+                title: 'Error!',
+                text: errorData.message,
+                icon: 'error',
+                confirmButtonText: 'OK'
+              });
+            }
+          } catch (error) {
+            Swal.fire({
+              title: 'Error!',
+              text: 'There was an issue removing the movie.',
+              icon: 'error',
+              confirmButtonText: 'OK'
+            });
+          }
         }
       });
     });

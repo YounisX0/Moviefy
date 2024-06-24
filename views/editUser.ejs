@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +16,7 @@
     </a>
     <ul class="side-menu top">
       <li>
-        <a href="/admin">
+        <a href="/data">
           <i class='bx bxs-home'></i>
           <span class="text">Home</span>
         </a>
@@ -70,7 +69,7 @@
         </div>
       </div>
       <main>
-        <form action="/users/<%= user._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+        <form id="editUserForm" action="/users/<%= user._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
           <div>
             <label for="name">Name</label>
             <input type="text" id="name" name="name" value="<%= user.name %>" required>
@@ -88,6 +87,33 @@
       </main>
     </main>
   </section>
+  <script>
+    async function handleSubmit(event) {
+      event.preventDefault();
+
+      const form = event.target;
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert(result.message);
+        } else {
+          alert(result.message);
+        }
+      } catch (error) {
+        alert('An error occurred: ' + error.message);
+      }
+    }
+
+    document.getElementById('editUserForm').addEventListener('submit', handleSubmit);
+  </script>
   <script src="/js/admin.js"></script>
 </body>
 </html>
