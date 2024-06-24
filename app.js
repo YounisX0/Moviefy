@@ -52,18 +52,18 @@ app.post("/movies", async (req, res) => {
 });
 
 app.post("/users", async (req, res) => {
-  const { name, email, password} = req.body;
+  const { name, email, password } = req.body;
 
   try {
     const newUser = new User({
       name: name,
       email: email,
-      year: password,
+      password: password,
     });
 
-    await newMovie.save();
+    await newUser.save();
 
-    res.status(201).send("New Movie has been saved");
+    res.status(201).send("New User has been saved");
   } catch (error) {
     res.status(500).send(error.message);
   }
