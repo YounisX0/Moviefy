@@ -123,34 +123,6 @@ app.get('/login', (req, res) => {
   res.render('login');
 });
 
-app.get('/', (req, res) => {
-  res.render('index', { title: 'Home Page' });
-});
-
-app.get('/movie', (req, res) => {
-  res.render('movie', { title: 'Movie Page' });
-});
-
-app.get('/trending', (req, res) => {
-  res.render('trending', { title: 'Trending Page' });
-});
-
-app.get('/home', (req, res) => {
-  res.render('mainpage');
-});
-
-app.get('/movifey', (req, res) => {
-  res.render('index');
-});
-
-app.get('/playpage', (req, res) => {
-  res.render('play-page');
-});
-
-app.get('/favorites', (req, res) => {
-  res.render('favorites');
-});
-
 const PORT = process.env.PORT || 5500;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
