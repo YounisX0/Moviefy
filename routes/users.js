@@ -104,4 +104,25 @@ router.put('/:id', upload.single('avatar'), async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+router.post('/login', async (req, res) => {
+  const { name, password } = req.body;
+
+  try {
+    const user = await User.findOne({ name });
+    if (!user) {
+      return res.status(400).send('<script>alert("Invalid login. User doesn\'t exist."); window.location.href="/login";</script>');
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return res.status(400).send('<script>alert("Invalid login. Name or password is incorrect."); window.location.href="/login";</script>');
+    }
+
+    res.redirect('/home');
+  } catch (error) {
+    res.status(500).send('<script>alert("Server error. Please try again later."); window.location.href="/login";</script>');
+  }
+});
+
 module.exports = router;

@@ -61,6 +61,9 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+module.exports = router;
+
+
 router.get('/:id/edit', async (req, res) => {
   try {
     const movie = await Movie.findById(req.params.id);
@@ -95,6 +98,7 @@ router.put('/:id', upload.single('poster'), async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
 
 
 
