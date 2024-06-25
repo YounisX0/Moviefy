@@ -50,34 +50,37 @@
       cursor: pointer;
     }
 
-    /* Dark mode styles */
-    body.dark-mode {
-      background-color: #121212;
-      color: #fff;
-    }
+    .toggle {
+  width: 40px;
+  height: 20px;
+  background-color: black;
+  border-radius: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+}
+.toggle-icon {
+  color: goldenrod;
+}
+.toggle-ball {
+  width: 18px;
+  height: 18px;
+  background-color: white;
+  position: absolute;
+  right: 1px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.5s ease all;
+}
+.toggle.active {
+  background-color: whitesmoke;
+}
 
-    body.dark-mode input[type="text"],
-    body.dark-mode input[type="email"],
-    body.dark-mode input[type="password"],
-    body.dark-mode input[type="file"],
-    body.dark-mode label {
-      background-color: #333;
-      color: #fff;
-      border: 1px solid #777;
-    }
-
-    body.dark-mode input[type="submit"] {
-      background-color: #4CAF50;
-    }
-
-    body.dark-mode .toggle {
-      background-color: #040404;
-      border: 1px solid #777;
-    }
-
-    body.dark-mode .toggle .toggle-ball {
-      background-color: #777;
-    }
+.toggle-ball.active {
+  background-color: black;
+  transform: translateX(-20px);
+}
   </style>
 </head>
 <body>
@@ -139,12 +142,10 @@
       const modeToggle = document.getElementById("modeToggle");
 
       // Function to toggle between light and dark mode
-      function toggleMode() {
-        document.body.classList.toggle("dark-mode");
-        // Save mode preference to localStorage
-        const isDarkMode = document.body.classList.contains('dark-mode');
-        localStorage.setItem('darkMode', isDarkMode);
-      }
+      document.getElementById('modeToggle').addEventListener('click', function () {
+  document.body.classList.toggle('light-mode');
+  document.getElementById('signupText').classList.toggle('light-mode-text');
+});
 
       // Event listener for mode toggle button
       modeToggle.addEventListener("click", function () {
@@ -257,46 +258,4 @@
     </div>
   </header>
 
-  <div class="container">
-    <form id="signupForm" action="/users" method="POST" enctype="multipart/form-data">
-      <br><br><br><br><br>
-      <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" required>
-
-      <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="password">Set a Password</label>
-      <div style="position: relative;">
-        <input type="password" id="password" name="password" required>
-        <i class="fas fa-eye" id="togglePassword1" style="position: absolute; right: 10px; top: 40%; transform: translateY(-50%); font-size: 20px; color: black; cursor: pointer;"></i>
-      </div>
-
-      <label for="conf_password">Confirm Password</label>
-      <div style="position: relative;">
-        <input type="password" id="conf_password" name="conf_password" required>
-        <i class="fas fa-eye" id="togglePassword2" style="position: absolute; right: 10px; top: 40%; transform: translateY(-50%); font-size: 20px; color: black; cursor: pointer;"></i>
-        <span id="passwordError" style="color: red; display: none;">Passwords do not match</span>
-      </div>
-
-      <label for="avatar">Upload Photo</label>
-      <input type="file" id="avatar" name="avatar" class="upload-input" accept="image/*">
-
-      <input type="submit" value="Submit">
-    </form>
-  </div>
-
-  <div id="message">
-    <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-    <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-    <p id="number" class="invalid">A <b>number</b></p>
-    <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-  </div>
-
-  <script src="../js/script.js"></script>
-  <script src="../js/swiper-bundle.min.js"></script>
-  <script src="../js/main.js"></script>
-  <script src="../js/theme-toggle.js"></script>
-</body>
-</html>
-
+  
