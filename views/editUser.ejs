@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,9 +16,9 @@
     </a>
     <ul class="side-menu top">
       <li>
-        <a href="/admin">
-          <i class='bx bxs-dashboard' style='color:#ffffff'></i>
-          <span class="text">Dashboard</span>
+        <a href="/data">
+          <i class='bx bxs-home'></i>
+          <span class="text">Home</span>
         </a>
       </li>
       <li>
@@ -35,7 +34,7 @@
         </a>
       </li>
       <li>
-        <a href="../html/index.html">
+        <a href="/movifey">
           <i class='bx bx-log-out' style='color:#ffffff'></i>
           <span class="text">Log out</span>
         </a>
@@ -46,13 +45,6 @@
     <nav class="navbar">
       <i class='bx bx-menu' style='color:#ffffff'></i>
       <a href="#" class="nav-link">Categories</a>
-      <a href="" class="notification">
-        <i class='bx bxs-bell'></i>
-        <span class="num">8</span>
-      </a>
-      <a href="#">
-        <img src="" alt="">
-      </a>
     </nav>
     <main>
       <div class="head-title">
@@ -70,7 +62,7 @@
         </div>
       </div>
       <main>
-        <form action="/users/<%= user._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+        <form id="editUserForm" action="/users/<%= user._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
           <div>
             <label for="name">Name</label>
             <input type="text" id="name" name="name" value="<%= user.name %>" required>
@@ -88,6 +80,33 @@
       </main>
     </main>
   </section>
+  <script>
+    async function handleSubmit(event) {
+      event.preventDefault();
+
+      const form = event.target;
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert(result.message);
+        } else {
+          alert(result.message); 
+        }
+      } catch (error) {
+        alert('An error occurred: ' + error.message);
+      }
+    }
+
+    document.getElementById('editUserForm').addEventListener('submit', handleSubmit);
+  </script>
   <script src="/js/admin.js"></script>
 </body>
 </html>
