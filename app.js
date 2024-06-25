@@ -40,23 +40,27 @@ app.use('/movies', movieRoutes);
 app.use('/users', userRoutes);
 
 app.post("/movies", async (req, res) => {
-  const { title, director, year, genre } = req.body;
+  const movies = req.body;
+  if (!Array.isArray(movies)) {
+    return res.status(400).send("Request body must be an array of movie objects");
+  }
+  const validatedMovies = movies.map(movie => ({
+    title: movie.title || "Unknown Title",
+    director: movie.director || "Movifey",
+    year: movie.year || 2024,
+    genre: movie.genre || "Unknown Genre",
+    poster: movie.poster || null
+  }));
 
   try {
-    const newMovie = new Movie({
-      title: title,
-      director: director,
-      year: year,
-      genre: genre
-    });
-
-    await newMovie.save();
-
-    res.status(201).send("New Movie has been saved");
+    const newMovies = await Movie.insertMany(validatedMovies);
+    res.status(201).send(`${newMovies.length} movies have been saved`);
   } catch (error) {
     res.status(500).send(error.message);
   }
 });
+
+
 
 app.post("/users", async (req, res) => {
   const { name, email, password } = req.body;

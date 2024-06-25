@@ -1,8 +1,167 @@
-POST http://localhost:5500/users
+POST http://localhost:5500/movies/add
 Content-Type: application/json
 
-{
-  "name": "Ahmed",
-  "email": "ahmed@gmail.com",
-  "password":"1234"
-}
+
+  {
+    "title": "Spider-Man: No-way home",
+    "director": "Movifey",
+    "year": 2024,
+    "genre": "Action",
+    "poster": null
+  },
+  {
+    "title": "Jungle cruise",
+    "director": "Movifey",
+    "year": 2024,
+    "genre": "Adventure",
+    "poster": null
+  },
+  {
+    "title": "Loki",
+    "director": "Movifey",
+    "year": 2024,
+    "genre": "Action/Sci-Fi",
+    "poster": null
+  },
+  {
+    "title": "Squid game",
+    "director": "Movifey",
+    "year": 2024,
+    "genre": "Action",
+    "poster": null
+  },
+  {
+    "title": "Hamlet Pheron",
+    "director": "Movifey",
+    "year": 2024,
+    "genre": "Action",
+    "poster": null
+  },
+  {
+    "title": "Hawk eye",
+    "director": "Movifey",
+    "year": 2024,
+    "genre": "Action",
+    "poster": null
+  },
+  {
+    "title": "Agents ofShield",
+    "director": "Movifey",
+    "year": 2024,
+    "genre": "Action",
+    "poster": null
+  },
+  {
+    "title": "El-feel el-azraa",
+    "director": "Movifey",
+    "year": 2024,
+    "genre": "Horror",
+    "poster": null
+  },
+  {
+    "title": "Dune Part-Two",
+    "director": "Movifey",
+    "year": 2024,
+    "genre": "Horror",
+    "poster": null
+  },
+  {
+    "title": "Jumanji: Welcome to the Jungle",
+    "director": "Movifey",
+    "year": 2024,
+    "genre": "Adventure",
+    "poster": null
+  },
+  {
+    "title": "Hit-man",
+    "director": "Movifey",
+    "year": 2024,
+    "genre": "Action",
+    "poster": null
+  },
+  {
+    "title": "Tesbah 3la 5eer",
+    "director": "Movifey",
+    "year": 2024,
+    "genre": "Commedy/Drama",
+    "poster": null
+  },
+  {
+    "title": "The Eternals",
+    "director": "Movifey",
+    "year": 2024,
+    "genre": "Sci-Fi",
+    "poster": null
+  },
+  {
+    "title": "Spectre",
+    "director": "Movifey",
+    "year": 2024,
+    "genre": "Action/Drama",
+    "poster": null
+  },
+  {
+    "title": "Money-Heist",
+    "director": "Movifey",
+    "year": 2024,
+    "genre": "Action",
+    "poster": null
+  },
+  {
+    "title": "Ra8da el Motwa7sha",
+    "director": "Movifey",
+    "year": 2024,
+    "genre": "Comedy",
+    "poster": null
+  },
+  {
+    "title": "Masar Egbary",
+    "director": "Movifey",
+    "year": 2024,
+    "genre": "Drama",
+    "poster": null
+  },
+  {
+    "title": "Bitlou' Al Rouh",
+    "director": "Movifey",
+    "year": 2024,
+    "genre": "Drama",
+    "poster": null
+  },
+  {
+    "title": "No Way Up",
+    "director": "Movifey",
+    "year": 2024,
+    "genre": "Thriller",
+    "poster": null
+  },
+  {
+    "title": "Black Box",
+    "director": "Movifey",
+    "year": 2024,
+    "genre": "Thriller",
+    "poster": null
+  },
+  {
+    "title": "Leh Laa ?!",
+    "director": "Movifey",
+    "year": 2024,
+    "genre": "Drama",
+    "poster": null
+  },
+  {
+    "title": "Flight 404",
+    "director": "Movifey",
+    "year": 2024,
+    "genre": "Drama",
+    "poster": null
+  },
+  {
+    "title": "Taghyeer Gaw",
+    "director": "Movifey",
+    "year": 2024,
+    "genre": "Drama",
+    "poster": null
+  }
+
+
